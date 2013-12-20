@@ -1,0 +1,173 @@
+body.signup-page {
+  padding: 0;
+}
+
+.signup-page {
+  #signup-container {
+    margin: 0 auto;
+    width: 350px;
+  }
+
+  form .btn, input, label, .social p {
+    font-size: 14px;
+  }
+
+  input, .social p, form {
+    .box-sizing(border-box);
+  }
+
+  a.header, .social p {
+    text-shadow: #fff 0 1px 0;
+  }
+
+  form,
+  input,
+  &,
+  a.header span,
+  a.header img {
+    .transition(all 0.2s);
+  }
+
+
+  /* ======================================================================= */
+  /* Logo */
+
+  a.header {
+    display: block;
+    font-size: 16px;
+    line-height: 22px;
+    margin: 0 auto 40px auto;
+    text-decoration: none;
+    width: 195px;
+
+    span, strong {
+      margin-left: -1px;
+      color: #777;
+    }
+
+    img, span {
+      .opacity(93);
+    }
+
+    strong {
+      font-size: 22px;
+    }
+
+    img {
+      display: block;
+      float: left;
+      margin: -6px 10px 0 0;
+      position: relative;
+    }
+
+    &:hover img, &:hover span {
+      .opacity(70);
+    }
+  }
+
+
+  /* ======================================================================= */
+  /* Form */
+
+  .fields, form .btn {
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    .border-radius(3px);
+    .box-shadow(~"rgba(255, 255, 255, 0.9) 0 1px 0 inset, rgba(255, 255, 255, 0.6) 0 1px 0");
+  }
+
+  form {
+    background: rgba(0, 0, 0, 0.06);
+    margin: 0;
+    padding: 20px;
+    width: 100%;
+    .border-radius(5px);
+    .box-shadow(~"rgba(0, 0, 0, 0.1) 0 1px 5px inset, #fff 0 1px 0");
+
+    .btn {
+      line-height: 26px;
+      margin-top: 15px;
+    }
+  }
+
+  input {
+    background: rgba(255, 255, 255, 0.9);
+    border: solid rgba(0, 0, 0, 0.1);
+    border-width:  0 0 1px 0;
+    height: 40px;
+    margin: 0;
+    padding: 0 15px;
+    width: 100%;
+    .border-radius(0);
+    .box-shadow(none);
+
+    &:first-child {
+      .border-radius(3px 3px 0 0);
+    }
+  
+    &:last-child {
+      border: none;
+      .border-radius(0 0 3px 3px);
+    }
+  
+    &:focus {
+      background: rgba(255, 255, 255, 1);
+      border-color: rgba(0, 0, 0, 0.13);
+      .box-shadow(none);
+    }
+  }
+
+
+  /* ======================================================================= */
+  /* Signup with */
+
+  .social {
+    text-align: center;
+    width: 100%;
+
+    p {
+      color: #777;
+      display: block;
+      height: 20px;
+      margin: 30px 0;
+
+      &:before,
+      &:after {
+        background: rgba(0, 0, 0, 0.1);
+        content: "";
+        display: block;
+        height: 1px;
+        margin-top: 10px;
+        position: absolute;
+        width: 100px;
+        .box-shadow(#fff 0 1px 0);
+      }
+    
+      &:after {
+        margin-left: 250px;
+        margin-top: -10px;
+      }
+    }
+  
+    .btn {
+      line-height: 22px;
+      margin-right: 10px;
+      padding-left: 40px;
+      padding-right: 10px;
+
+      &:last-child {
+        margin: 0;
+      }
+
+      i {
+        border-right: 1px solid rgba(0, 0, 0, 0.2);
+        display: block;
+        height: 30px;
+        line-height: 30px;
+        margin: -4px 0 0 -40px;
+        position: absolute;
+        width: 30px;
+        .box-shadow(rgba(255, 255, 255, 0.15) 1px 0 0);
+      }
+    }
+  }
+}

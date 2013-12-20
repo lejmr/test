@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7"><![endif]-->
+<!--[if IE 7]><html class="no-js lt-ie9 lt-ie8"><![endif]-->
+<!--[if IE 8]><html class="no-js lt-ie9"><![endif]-->
+<!--[if gt IE 8]><!--><html class="no-js"><!--<![endif]-->
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<title>
+		AdminFlare - Dashboard
+	</title>
+	<meta name="description" content="">
+	<meta name="viewport" content="width=device-width">
+	
+	<script src="assets/javascripts/1.3.0/adminflare-demo-init.min.js" type="text/javascript"></script>
+
+	<link href="http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,400,300,600,700" rel="stylesheet" type="text/css">
+	<script type="text/javascript">
+		// Include Bootstrap stylesheet 
+		document.write('<link href="assets/css/' + DEMO_ADMINFLARE_VERSION + '/' + DEMO_CURRENT_THEME + '/bootstrap.min.css" media="all" rel="stylesheet" type="text/css" id="bootstrap-css">');
+		// Include AdminFlare stylesheet 
+		document.write('<link href="assets/css/' + DEMO_ADMINFLARE_VERSION + '/' + DEMO_CURRENT_THEME + '/adminflare.min.css" media="all" rel="stylesheet" type="text/css" id="adminflare-css">');
+	</script>
+	
+	<script src="assets/javascripts/1.3.0/modernizr-jquery.min.js" type="text/javascript"></script>
+	<script src="assets/javascripts/1.3.0/bootstrap.min.js" type="text/javascript"></script>
+	<script src="assets/javascripts/1.3.0/adminflare.min.js" type="text/javascript"></script>
+
+	<style type="text/css">
+		/* ======================================================================= */
+		/* Server Statistics */
+		.well.widget-pie-charts .box {
+			margin-bottom: -20px;
+		}
+
+		/* ======================================================================= */
+		/* Why AdminFlare */
+		#why-adminflare ul {
+			position: relative;
+			padding: 0 10px;
+			margin: 0 -10px;
+		}
+
+		#why-adminflare ul:nth-child(2n) {
+			background: rgba(0, 0, 0, 0.02);
+		}
+
+		#why-adminflare li {
+			padding: 8px 10px;
+			list-style: none;
+			font-size: 14px;
+			padding-left: 23px;
+		}
+
+		#why-adminflare li i {
+			color: #666;
+			font-size: 14px;
+			margin: 3px 0 0 -23px;
+			position: absolute;
+		}
+
+
+		/* ======================================================================= */
+		/* Supported Browsers */
+		#supported-browsers header { color: #666; display: block; font-size: 14px; }
+			
+		#supported-browsers header strong { font-size: 18px; }
+
+		#supported-browsers .span10 { margin-bottom: -15px; text-align: center; }
+
+		#supported-browsers .span10 div {
+			margin-bottom: 15px;
+			margin-right: 15px;
+			display: inline-block;
+			width: 120px;
+		}
+
+		#supported-browsers .span10 div:last-child { margin-right: 0; }
+
+		#supported-browsers .span10 img { height: 40px; width: 40px; }
+
+		#supported-browsers .span10 span { line-height: 40px; font-size: 14px; font-weight: 600; }
+		
+		@media (max-width: 767px) {
+			#supported-browsers header { text-align: center; margin-bottom: 20px; }
+		}
+
+		/* ======================================================================= */
+		/* Status panel */
+		.status-example { line-height: 0; position:relative; top: 22px }
+	</style>
+	
+	<script type="text/javascript">
+		$(document).ready(function () {
+			$('a[rel=tooltip]').tooltip();
+
+			// Easy Pie Charts
+			var easyPieChartDefaults = {
+				animate: 2000,
+				scaleColor: false,
+				lineWidth: 12,
+				lineCap: 'square',
+				size: 100,
+				trackColor: '#e5e5e5'
+			}
+			$('#easy-pie-chart-1').easyPieChart($.extend({}, easyPieChartDefaults, {
+				barColor: '#3da0ea'
+			}));
+			$('#easy-pie-chart-2').easyPieChart($.extend({}, easyPieChartDefaults, {
+				barColor: '#e7912a'
+			}));
+			$('#easy-pie-chart-3').easyPieChart($.extend({}, easyPieChartDefaults, {
+				barColor: '#bacf0b'
+			}));
+			$('#easy-pie-chart-4').easyPieChart($.extend({}, easyPieChartDefaults, {
+				barColor: '#4ec9ce'
+			}));
+			$('#easy-pie-chart-5').easyPieChart($.extend({}, easyPieChartDefaults, {
+				barColor: '#ec7337'
+			}));
+			$('#easy-pie-chart-6').easyPieChart($.extend({}, easyPieChartDefaults, {
+				barColor: '#f377ab'
+			}));
+			// Visits Chart
+			var visitsChartData = [{
+				// Visits
+				label: 'Visits',
+				data: [
+					[6, 1300],
+					[7, 1600],
+					[8, 1900],
+					[9, 2100],
+					[10, 2500],
+					[11, 2200],
+					[12, 2000],
+					[13, 1950],
+					[14, 1900],
+					[15, 2000]
+				]
+			}, {
+				// Returning Visits
+				label: 'Returning Visits',
+				data: [
+					[6, 500],
+					[7, 600],
+					[8, 550],
+					[9, 600],
+					[10, 800],
+					[11, 900],
+					[12, 800],
+					[13, 850],
+					[14, 830],
+					[15, 1000]
+				],
+				filledPoints: true
+			}];
+			$('#visits-chart').simplePlot(visitsChartData, {
+				series: {
+					points: {
+						show: true,
+						radius: 5
+					},
+					lines: {
+						show: true
+					}
+				},
+				xaxis: {
+					tickDecimals: 2
+				},
+				yaxis: {
+					tickSize: 1000
+				}
+			}, {
+				height: 205,
+				tooltipText: "y + ' visitors at ' + x + '.00h'"
+			});
+			// Comments Tab
+			$('.comment-remove').click(function () {
+				bootbox.confirm("Are you sure?", function (result) {
+					alert("Confirm result: " + result);
+				});
+				return false;
+			});
+			// New Users Tab
+			$('#tab-users a').tooltip();
+		});
+	</script>
+</head>
+<body>
+
+	
+<header class="navbar navbar-fixed-top" id="main-navbar">
+		<div class="navbar-inner">
+			<div class="container">
+				<a class="logo" href="#"><img alt="Af_logo" src="assets/images/af-logo.png"></a>
+
+				<a class="btn nav-button collapsed" data-toggle="collapse" data-target=".nav-collapse">
+					<span class="icon-reorder"></span>
+				</a>
+
+				<div class="nav-collapse collapse">
+					<ul class="nav pull-right">
+						
+						<li>
+							<ul class="messages">
+								<li>
+									<a href="#"><i class="icon-warning-sign"></i> 23<span class="		responsive-text"> alerts</span></a>
+								</li>
+								<!--<li>
+									<a href="#"><i class="icon-envelope"></i> 25<span class="		responsive-text"> new messages</span></a>
+								</li>-->
+							</ul>
+						</li>
+						<li class="separator"></li>
+						
+					
+						<li class="dropdown">
+							<a href="#" class="dropdown-toggle usermenu" data-toggle="dropdown">
+								<img alt="Avatar" src="assets/images/avatar.png">
+								<span>&nbsp;&nbsp;Miloš Kozák</span>
+							</a>
+							<ul class="dropdown-menu">
+								<li> <a href="http://localhost:8000/billing/profil/">Fakturacni udaje</a> </li>
+								<li><a href="http://localhost:8000/settings/">Kontakt</a> </li>
+								<li><a href="http://localhost:8000/settings/heslo/">Zmena hesla</a> </li>
+								<li class="divider"></li>
+								<li><a href="http://localhost:8000/admin/"><i class="icon-cogs"></i> Administrace</a></li>
+									
+								<li><a href="http://localhost:8000/logout/"><i class="icon-signout"></i> Odhlasit</a></li>
+							</ul>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</header>
+	<!-- / Main navigation bar -->
+	
+	<!-- Left navigation panel -->
+		
+	<nav style="height: 100%; position: fixed; top: 0px; left: 0px;" id="left-panel">
+		<div style="overflow: hidden;" id="left-panel-content">
+			<ul style="transition-property: -moz-transform; transform-origin: 0px 0px 0px; transform: translate(0px, 0px);">
+				<li> <!-- class="active" -->
+					<a href="http://localhost:8000/"><span class="icon-dashboard"></span>Dashboard</a>
+				</li>
+				<li>
+					<a href="http://localhost:8000/virtuals/"><span class="icon-tasks"></span>Servers</a>
+				</li>
+				<li>
+					<a href="http://localhost:8000/billing/vdc/"><span class="icon-money"></span>Billing</a>
+				</li>
+				<li>
+					<a href="http://localhost:8000/support/"><span class="icon-bullhorn"></span>Support</a>
+				</li>
+		</ul></div>
+		<div class="icon-caret-down"></div>
+		<div class="icon-caret-up"></div>
+	</nav>
+	<!-- / Left navigation panel -->
+	
+	<!-- Page content
+		================================================== -->
+	<section class="container">
+		
+		
+
+		
+		<!-- Quick buttons
+			================================================== -->
+		<section class="row-fluid">
+			<h3 class="box-header">
+				Status panel
+			<a href="#" class="box-collapse pull-right">hide&nbsp;&nbsp;<i class="icon-caret-up"></i></a><a href="#" class="box-expand pull-right" style="display: none">show&nbsp;&nbsp;<i class="icon-caret-down"></i></a></h3>
+			<div class="box">
+				<div class="row-fluid" style="margin-bottom: 20px">
+				
+					<a href="#" class="btn quick-btn span2 btn-blue" rel="tooltip" title="Mnozstvi vyuziteho/nakopeneho zdroje" data-placement="bottom">
+						
+						
+						<span class="quick-btn-title">
+							<span style="height:100px; vertical-align: bottom"><img src="page_soubory/bg_graph.png" style="height:50px" alt="600.0&nbsp;MHz" width="15"></span>
+							<span style="height:100px; vertical-align: bottom"><img src="page_soubory/bg_graph.png" style="height:50px" alt="600.0&nbsp;MHz" width="15"></span>
+							
+							<br>
+							
+							<b>CPU</b>
+						</span>
+					</a>
+					<script>
+
+					</script>
+				
+					<a href="#" class="btn quick-btn span2 btn-green" rel="tooltip" title="Mnozstvi vyuziteho/nakopeneho zdroje" data-placement="bottom">
+						
+						
+						<span class="quick-btn-title">
+							<span style="height:100px; vertical-align: bottom"><img src="page_soubory/bg_graph.png" style="height:31px" alt="1280.0&nbsp;MB" width="15"></span>
+							<span style="height:100px; vertical-align: bottom"><img src="page_soubory/bg_graph.png" style="height:50px" alt="2048.0&nbsp;MB" width="15"></span>
+							
+							<br>
+							
+							<b>RAM</b>
+						</span>
+					</a>
+					<script>
+
+					</script>
+				
+					<a href="#" class="btn quick-btn span2 btn-orange" rel="tooltip" title="Mnozstvi vyuziteho/nakopeneho zdroje" data-placement="bottom">
+						
+						
+						<span class="quick-btn-title">
+							<span style="height:100px; vertical-align: bottom"><img src="page_soubory/bg_graph.png" style="height:8px" alt="8.0&nbsp;GB" width="15"></span>
+							<span style="height:100px; vertical-align: bottom"><img src="page_soubory/bg_graph.png" style="height:50px" alt="50.0&nbsp;GB" width="15"></span>
+							
+							<br>
+							
+							<b>HDD</b>
+						</span>
+					</a>
+					<script>
+
+					</script>
+				
+					<a href="#" class="btn quick-btn span2 btn-cyan" rel="tooltip" title="Mnozstvi vyuziteho/nakopeneho zdroje" data-placement="bottom">
+						
+						
+						<span class="quick-btn-title">
+							<span style="height:100px; vertical-align: bottom"><img src="page_soubory/bg_graph.png" style="height:3px" alt="3.0&nbsp;-" width="15"></span>
+							<span style="height:100px; vertical-align: bottom"><img src="page_soubory/bg_graph.png" style="height:50px" alt="50.0&nbsp;-" width="15"></span>
+							
+							<br>
+							
+							<b>IPv4</b>
+						</span>
+					</a>
+					<script>
+
+					</script>
+				
+					<a href="#" class="btn quick-btn span2 btn-pink" rel="tooltip" title="Mnozstvi vyuziteho/nakopeneho zdroje" data-placement="bottom">
+						
+						
+						<span class="quick-btn-title">
+							<span style="height:100px; vertical-align: bottom"><img src="page_soubory/bg_graph.png" style="height:px" alt="0.0&nbsp;subnet" width="15"></span>
+							<span style="height:100px; vertical-align: bottom"><img src="page_soubory/bg_graph.png" style="height:50px" alt="0.0&nbsp;subnet" width="15"></span>
+							
+							<br>
+							
+							<b>IPv6 /32</b>
+						</span>
+					</a>
+					<script>
+
+					</script>
+				
+				</div>
+			</div>
+		</section>
+		<!-- / Quick buttons -->
+	
+	
+		<section class="row-fluid">
+			<h3 class="box-header">
+				Virtualni servery
+			<a href="#" class="box-collapse pull-right">hide&nbsp;&nbsp;<i class="icon-caret-up"></i></a><a href="#" class="box-expand pull-right" style="display: none">show&nbsp;&nbsp;<i class="icon-caret-down"></i></a></h3>
+			<div class="box">
+			<table class="table table-bordered table-striped">
+			<tbody><tr>
+				<th></th>
+				<th>Virtualni server</th>
+				<th>IP adresa</th>
+				<th>CPU</th>
+				<th>HDD</th>
+				<th>RAM</th>
+				<th>Ovladani</th>
+			</tr>
+			</tbody><tbody>
+			
+			<tr>
+				<td> 
+
+
+
+
+
+
+
+	
+	
+	
+		
+		<div class="btn-group">
+		    
+		    <a class="btn dropdown-toggle btn-success" data-toggle="dropdown" href="#">
+		     	<i class="icon-play"></i> Running 
+				<span class="caret"></span>
+			</a>
+		    
+		    <ul class="dropdown-menu">
+		        
+		        <li><a href="http://localhost:8000/virtual/stop/1657/"><i class="icon-stop"></i> Okamzite zastavit</a></li>
+		        <li><a href="http://localhost:8000/virtual/restart/1657/"><i class="icon-refresh"></i> Restartovat</a></li>
+		        
+		         <li><a href="http://localhost:8000/virtual/update/1657/"><i class="icon-cogs"></i> Nastaveni</a></li>
+		    </ul>
+		</div> 
+		
+	
+	
+	
+	
+
+
+
+
+				
+					
+				</td>
+				<td>
+					<img src="page_soubory/linux.png" alt="TTY Linux">				
+					<a href="http://localhost:8000/virtual/update/1657/" title="Zmena parametru">
+						private.lejmr.com
+					</a>
+				</td>
+				<td>192.168.100.136</td>
+				<td>150.0 MHz</td>
+				<td>1.0 GB</td>
+				<td>512.0 MB</td>
+				<td>
+					
+					
+
+
+	
+		<a href="http://localhost:8000/one/vnc/1657/" title="Vzdalena plocha" class="btn btn-info" target="_blank"><i class="icon-desktop"></i></a>
+	
+
+
+
+					
+
+	
+
+
+
+										
+				</td>
+			</tr>
+			
+			<tr>
+				<td> 
+
+
+
+
+
+
+
+	
+	
+		
+		
+			
+				<button class="btn btn-info disabled"><i class="icon-spinner icon-spin"></i> Pending</button>
+			
+		
+		
+	
+
+
+
+
+				
+					
+				</td>
+				<td>
+					<img src="page_soubory/debian.png" alt="Debian 7.0 64bit">				
+					<a href="http://localhost:8000/virtual/update/1658/" title="Zmena parametru">
+						milosuv
+					</a>
+				</td>
+				<td>192.168.100.15</td>
+				<td>350.0 MHz</td>
+				<td>5.0 GB</td>
+				<td>512.0 MB</td>
+				<td>
+					
+					
+
+
+	
+
+
+
+					
+
+	
+
+
+
+										
+				</td>
+			</tr>
+			
+			<tr>
+				<td> 
+
+
+
+
+
+
+
+	
+	
+		
+		
+			
+				<a href="http://localhost:8000/virtual/start/16510/" title="Spustit" class="btn btn-blue"><i class="icon-play"></i> Spustit</a>	
+			
+		
+		
+	
+
+
+
+
+				
+					
+				</td>
+				<td>
+					<img src="page_soubory/linux.png" alt="TTY Linux">				
+					<a href="http://localhost:8000/virtual/update/16510/" title="Zmena parametru">
+						vm2
+					</a>
+				</td>
+				<td>192.168.100.137</td>
+				<td>100.0 MHz</td>
+				<td>2.0 GB</td>
+				<td>256.0 MB</td>
+				<td>
+					
+					
+
+
+	
+
+
+
+					
+
+	
+		<a href="http://localhost:8000/virtual/delete/16510/" title="Odstranit" class="btn btn-danger"><i class="icon-trash"></i></a>
+	
+
+
+
+										
+				</td>
+			</tr>
+			
+			</tbody>
+			</table>
+			<a class="btn btn-primary" href="http://localhost:8000/virtuals/create/"><i class="icon-plus"></i> Pridat virtualni server</a>
+			</div>
+		</section>
+		
+
+
+
+		
+		<!-- Page footer
+			================================================== -->
+		<footer id="main-footer">
+			Copyright © 2013 <a href="#">XXXX</a>, all rights reserved.
+			<a href="#" class="pull-right" id="on-top-link">
+				On Top&nbsp;<i class=" icon-chevron-up"></i>
+			</a>
+		</footer>
+		<!-- / Page footer -->
+	</section>
+
+</body>
+</html>

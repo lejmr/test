@@ -1,0 +1,15 @@
+﻿//
+// Mixins
+// --------------------------------------------------
+
+.text-shadow(@text_shadow) {
+  -webkit-text-shadow: @text_shadow;
+  -moz-text-shadow: @text_shadow;
+  -o-text-shadow: @text_shadow;
+  text-shadow: @text_shadow;
+}
+
+.ieBackground(@color) {
+  *background-color: @color;
+  .reset-filter();
+}
